@@ -1,0 +1,42 @@
+/chp 28 Object Keyword
+
+object MySingleton {
+    var name: String ="Singleton"
+    fun printName(){
+        println(name)
+    }
+}
+class MyClass {
+    companion object {
+
+    var name: String = "Singleton"
+    fun printName() {
+        println(name)
+    }
+}
+}
+class PlayerService(){ // anonymous object 
+    private fun giveMeAPlayer() = object {
+        val name = "Mike"
+        val gamePlayed = 6L
+        val points = 42L
+        fun pointsPerGame() = "$name: Avg points Per Game: ${points/gamePlayed}"
+
+    }
+    fun getTheName(): String {
+        val thePlayer = giveMeAPlayer()
+        print(thePlayer.pointsPerGame())
+        return thePlayer.name
+    }
+}
+
+fun main(args:Array<String>) {
+
+println(MySingleton.name)
+    println(MySingleton.printName())
+
+    println(MyClass.name)
+    MyClass.printName()
+
+
+}
